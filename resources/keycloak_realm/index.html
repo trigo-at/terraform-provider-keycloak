@@ -107,6 +107,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../keycloak_realm_events/">keycloak_realm_events</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../keycloak_user/">keycloak_user</a>
                 </li>
                 <li class="">
@@ -277,9 +281,10 @@
 Users log in to realms and can be federated from multiple sources.</p>
 <h3 id="example-usage">Example Usage</h3>
 <pre><code class="hcl">resource &quot;keycloak_realm&quot; &quot;realm&quot; {
-    realm                = &quot;test&quot;
-    enabled              = true
-    display_name         = &quot;test realm&quot;
+    realm                   = &quot;test&quot;
+    enabled                 = true
+    display_name            = &quot;test realm&quot;
+    display_name_html       = &quot;&lt;b&gt;test realm&lt;/b&gt;&quot;
 
     login_theme          = &quot;base&quot;
 
@@ -338,6 +343,7 @@ Users log in to realms and can be federated from multiple sources.</p>
 <li><code>realm</code> - (Required) The name of the realm. This is unique across Keycloak.</li>
 <li><code>enabled</code> - (Optional) When false, users and clients will not be able to access this realm. Defaults to <code>true</code>.</li>
 <li><code>display_name</code> - (Optional) The display name for the realm that is shown when logging in to the admin console.</li>
+<li><code>display_name_html</code> - (Optional) The display name for the realm that is rendered as HTML on the screen when logging in to the admin console.</li>
 </ul>
 <h5 id="login-settings">Login Settings</h5>
 <p>The following attributes are all booleans, and can be found in the "Login" tab within the realm settings.
@@ -408,7 +414,27 @@ This block supports the following attributes:</p>
 <li><code>default_locale</code> - (Required) The locale to use by default. This locale code must be present within the <code>supported_locales</code> list.</li>
 </ul>
 <h5 id="security-defenses-headers">Security Defenses Headers</h5>
-<p>Header configuration support for browser security settings and brute force detection</p>
+<p>Header configuration support for browser security settings and brute force detection. It can be configured trough the<code>security_defenses</code> block using the <code>headers</code> and the <code>brute_force_detection</code> subblocks. </p>
+<p>The <code>headers</code> block supports the following attributes:</p>
+<ul>
+<li><code>x_frame_options</code> - (Optional) Sets the x-frame-option, could be used for prevent pages from being included by non-origin iframes. More Infos could be found in the <a href="https://tools.ietf.org/html/rfc7034">RFC7034</a></li>
+<li><code>content_security_policy</code> - (Optional) Sets the Content Security Policy, could be used for prevent pages from being included by non-origin iframes. More Infos could be found in the <a href="https://www.w3.org/TR/CSP/">W3C-CSP</a> Abstract.</li>
+<li><code>content_security_policy_report_only</code> - (Optional) For testing Content Security Policies.</li>
+<li><code>x_content_type_options</code> - (Optional) Sets the X-Content-Type-Options,  could be used for prevent MIME-sniffing a respone away from the declared content-type</li>
+<li><code>x_robots_tag</code> - (Optional) Prevent pages from appearing in search engines.</li>
+<li><code>x_xss_protection</code> - (Optional) This header configures the Cross-site scripting (XSS) filter in your browser.</li>
+<li><code>strict_transport_security</code> - (Optional) The Script-Transport-Security HTTP header tells browsers to always use HTTPS. Maxage could be set and subdomains could be also included.</li>
+</ul>
+<p>The <code>brute_force_detection</code> block supports the following attributes:</p>
+<ul>
+<li><code>permanent_lockout</code> - (Optional) Lock the user permanently when the user exceeds the maximum login failures.</li>
+<li><code>max_login_failures</code> - (Optional) How many failures before wait is triggered.</li>
+<li><code>wait_increment_seconds</code> - (Optional) When failure threshold has been met, how much time should the user be locked out?</li>
+<li><code>quick_login_check_milli_seconds</code> - (Optional) If a failure happens concurrently too quickly, lock out the user.</li>
+<li><code>minimum_quick_login_wait_seconds</code> - (Optional) How long to wait after a quick login failure.</li>
+<li><code>max_failure_wait_seconds</code> - (Optional) Max. time a user will be locked out.</li>
+<li><code>failure_reset_time_seconds</code> - (Optional) When will failure count be reset?</li>
+</ul>
 <h4 id="atributes">Atributes</h4>
 <p>Map, can be used to add custom attributes to a realm. Or perhaps influence a certain attribute that is not supported in this terraform-provider</p>
 <h3 id="import">Import</h3>
@@ -422,7 +448,7 @@ This block supports the following attributes:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../keycloak_user/" class="btn btn-neutral float-right" title="keycloak_user">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../keycloak_realm_events/" class="btn btn-neutral float-right" title="keycloak_realm_events">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../../data_sources/keycloak_role/" class="btn btn-neutral" title="keycloak_role"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -456,7 +482,7 @@ This block supports the following attributes:</p>
         <span><a href="../../data_sources/keycloak_role/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../keycloak_user/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../keycloak_realm_events/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

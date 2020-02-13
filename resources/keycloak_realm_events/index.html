@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>keycloak_openid_user_property_protocol_mapper - Terraform Provider: Keycloak</title>
+  <title>keycloak_realm_events - Terraform Provider: Keycloak</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "keycloak_openid_user_property_protocol_mapper";
-    var mkdocs_page_input_path = "resources/keycloak_openid_user_property_protocol_mapper.md";
-    var mkdocs_page_url = "/terraform-provider-keycloak/resources/keycloak_openid_user_property_protocol_mapper/";
+    var mkdocs_page_name = "keycloak_realm_events";
+    var mkdocs_page_input_path = "resources/keycloak_realm_events.md";
+    var mkdocs_page_url = "/terraform-provider-keycloak/resources/keycloak_realm_events/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -89,9 +89,23 @@
                     
     <a class="" href="../keycloak_realm/">keycloak_realm</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../keycloak_realm_events/">keycloak_realm_events</a>
+    <a class="current" href="./">keycloak_realm_events</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#keycloak_realm_events">keycloak_realm_events</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#example-usage">Example Usage</a></li>
+        
+            <li><a class="toctree-l4" href="#argument-reference">Argument Reference</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -137,27 +151,9 @@
                     
     <a class="" href="../keycloak_openid_user_attribute_protocol_mapper/">keycloak_openid_user_attribute_protocol_mapper</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">keycloak_openid_user_property_protocol_mapper</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#keycloak_openid_user_property_protocol_mapper">keycloak_openid_user_property_protocol_mapper</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#example-usage-client">Example Usage (Client)</a></li>
-        
-            <li><a class="toctree-l4" href="#example-usage-client-scope">Example Usage (Client Scope)</a></li>
-        
-            <li><a class="toctree-l4" href="#argument-reference">Argument Reference</a></li>
-        
-            <li><a class="toctree-l4" href="#import">Import</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../keycloak_openid_user_property_protocol_mapper/">keycloak_openid_user_property_protocol_mapper</a>
                 </li>
                 <li class="">
                     
@@ -264,10 +260,10 @@
         
       
     
-    <li>keycloak_openid_user_property_protocol_mapper</li>
+    <li>keycloak_realm_events</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/mrparkers/terraform-provider-keycloak/edit/master/docs/resources/keycloak_openid_user_property_protocol_mapper.md"
+        <a href="https://github.com/mrparkers/terraform-provider-keycloak/edit/master/docs/resources/keycloak_realm_events.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -277,85 +273,45 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="keycloak_openid_user_property_protocol_mapper">keycloak_openid_user_property_protocol_mapper</h1>
-<p>Allows for creating and managing user property protocol mappers within
-Keycloak.</p>
-<p>User property protocol mappers allow you to map built in properties defined
-on the Keycloak user interface to a claim in a token. Protocol mappers can be
-defined for a single client, or they can be defined for a client scope which
-can be shared between multiple different clients.</p>
-<h3 id="example-usage-client">Example Usage (Client)</h3>
+                <h1 id="keycloak_realm_events">keycloak_realm_events</h1>
+<p>Allows for managing Realm Events settings within Keycloak.</p>
+<h3 id="example-usage">Example Usage</h3>
 <pre><code class="hcl">resource &quot;keycloak_realm&quot; &quot;realm&quot; {
-    realm   = &quot;my-realm&quot;
-    enabled = true
+  realm = &quot;test&quot;
 }
 
-resource &quot;keycloak_openid_client&quot; &quot;openid_client&quot; {
-    realm_id            = &quot;${keycloak_realm.realm.id}&quot;
-    client_id           = &quot;test-client&quot;
+resource &quot;keycloak_realm_events&quot; &quot;realm_events&quot; {
+  realm_id = &quot;${keycloak_realm.realm.id}&quot;
 
-    name                = &quot;test client&quot;
-    enabled             = true
+  events_enabled       = true
+  events_expiration    = 3600
 
-    access_type         = &quot;CONFIDENTIAL&quot;
-    valid_redirect_uris = [
-        &quot;http://localhost:8080/openid-callback&quot;
-    ]
-}
+  admin_events_enabled         = true
+  admin_events_details_enabled = true
 
-resource &quot;keycloak_openid_user_property_protocol_mapper&quot; &quot;user_property_mapper&quot; {
-    realm_id       = &quot;${keycloak_realm.realm.id}&quot;
-    client_id      = &quot;${keycloak_openid_client.openid_client.id}&quot;
-    name           = &quot;test-mapper&quot;
+  # When omitted or left empty, keycloak will enable all event types
+  enabled_event_types = [
+    &quot;LOGIN&quot;,
+    &quot;LOGOUT&quot;,
+  ]
 
-    user_property  = &quot;email&quot;
-    claim_name     = &quot;email&quot;
-}
-</code></pre>
-
-<h3 id="example-usage-client-scope">Example Usage (Client Scope)</h3>
-<pre><code class="hcl">resource &quot;keycloak_realm&quot; &quot;realm&quot; {
-    realm   = &quot;my-realm&quot;
-    enabled = true
-}
-
-resource &quot;keycloak_openid_client_scope&quot; &quot;client_scope&quot; {
-    realm_id = &quot;${keycloak_realm.realm.id}&quot;
-    name     = &quot;test-client-scope&quot;
-}
-
-resource &quot;keycloak_openid_user_property_protocol_mapper&quot; &quot;user_property_mapper&quot; {
-    realm_id        = &quot;${keycloak_realm.realm.id}&quot;
-    client_scope_id = &quot;${keycloak_openid_client_scope.client_scope.id}&quot;
-    name            = &quot;test-mapper&quot;
-
-    user_property   = &quot;email&quot;
-    claim_name      = &quot;email&quot;
+  events_listeners = [
+    &quot;jboss-logging&quot;, # keycloak enables the 'jboss-logging' event listener by default.
+  ]
 }
 </code></pre>
 
 <h3 id="argument-reference">Argument Reference</h3>
 <p>The following arguments are supported:</p>
 <ul>
-<li><code>realm_id</code> - (Required) The realm this protocol mapper exists within.</li>
-<li><code>client_id</code> - (Required if <code>client_scope_id</code> is not specified) The client this protocol mapper is attached to.</li>
-<li><code>client_scope_id</code> - (Required if <code>client_id</code> is not specified) The client scope this protocol mapper is attached to.</li>
-<li><code>name</code> - (Required) The display name of this protocol mapper in the GUI.</li>
-<li><code>user_property</code> - (Required) The built in user property (such as email) to map a claim for.</li>
-<li><code>claim_name</code> - (Required) The name of the claim to insert into a token.</li>
-<li><code>claim_value_type</code> - (Optional) The claim type used when serializing JSON tokens. Can be one of <code>String</code>, <code>long</code>, <code>int</code>, or <code>boolean</code>. Defaults to <code>String</code>.</li>
-<li><code>add_to_id_token</code> - (Optional) Indicates if the property should be added as a claim to the id token. Defaults to <code>true</code>.</li>
-<li><code>add_to_access_token</code> - (Optional) Indicates if the property should be added as a claim to the access token. Defaults to <code>true</code>.</li>
-<li><code>add_to_userinfo</code> - (Optional) Indicates if the property should be added as a claim to the UserInfo response body. Defaults to <code>true</code>.</li>
+<li><code>realm_id</code> - (Required) The name of the realm the event settings apply to.</li>
+<li><code>admin_events_enabled</code> - (Optional) When true, admin events are saved to the database, making them available through the admin console. Defaults to <code>false</code>.</li>
+<li><code>admin_events_details_enabled</code> - (Optional) When true, saved admin events will included detailed information for create/update requests. Defaults to <code>false</code>.</li>
+<li><code>events_enabled</code> - (Optional) When true, events from <code>enabled_event_types</code> are saved to the database, making them available through the admin console. Defaults to <code>false</code>.</li>
+<li><code>events_expiration</code> - (Optional) The amount of time in seconds events will be saved in the database. Defaults to <code>0</code> or never.</li>
+<li><code>enabled_event_types</code> - (Optional) The event types that will be saved to the database. Omitting this field enables all event types. Defaults to <code>[]</code> or all event types.</li>
+<li><code>events_listeners</code> - (Optional) The event listeners that events should be sent to. Defaults to <code>[]</code> or none. Note that new realms enable the <code>jboss-logging</code> listener by default, and this resource will remove that unless it is specified.</li>
 </ul>
-<h3 id="import">Import</h3>
-<p>Protocol mappers can be imported using one of the following formats:
-- Client: <code>{{realm_id}}/client/{{client_keycloak_id}}/{{protocol_mapper_id}}</code>
-- Client Scope: <code>{{realm_id}}/client-scope/{{client_scope_keycloak_id}}/{{protocol_mapper_id}}</code></p>
-<p>Example:</p>
-<pre><code class="bash">$ terraform import keycloak_openid_user_property_protocol_mapper.user_property_mapper my-realm/client/a7202154-8793-4656-b655-1dd18c181e14/71602afa-f7d1-4788-8c49-ef8fd00af0f4
-$ terraform import keycloak_openid_user_property_protocol_mapper.user_property_mapper my-realm/client-scope/b799ea7e-73ee-4a73-990a-1eafebe8e20a/71602afa-f7d1-4788-8c49-ef8fd00af0f4
-</code></pre>
               
             </div>
           </div>
@@ -363,10 +319,10 @@ $ terraform import keycloak_openid_user_property_protocol_mapper.user_property_m
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../keycloak_openid_group_membership_protocol_mapper/" class="btn btn-neutral float-right" title="keycloak_openid_group_membership_protocol_mapper">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../keycloak_user/" class="btn btn-neutral float-right" title="keycloak_user">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../keycloak_openid_user_attribute_protocol_mapper/" class="btn btn-neutral" title="keycloak_openid_user_attribute_protocol_mapper"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../keycloak_realm/" class="btn btn-neutral" title="keycloak_realm"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -394,10 +350,10 @@ $ terraform import keycloak_openid_user_property_protocol_mapper.user_property_m
           <a href="https://github.com/mrparkers/terraform-provider-keycloak/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../keycloak_openid_user_attribute_protocol_mapper/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../keycloak_realm/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../keycloak_openid_group_membership_protocol_mapper/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../keycloak_user/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

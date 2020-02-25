@@ -231,6 +231,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../keycloak_oidc_identity_provider/">keycloak_oidc_identity_provider</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../keycloak_attribute_importer_identity_provider_mapper/">keycloak_attribute_importer_identity_provider_mapper</a>
                 </li>
     </ul>
@@ -320,7 +324,7 @@ resource &quot;keycloak_ldap_user_federation&quot; &quot;ldap_user_federation&qu
 <li><code>import_enabled</code> - (Optional) When <code>true</code>, LDAP users will be imported into the Keycloak database. Defaults to <code>true</code>.</li>
 <li><code>edit_mode</code> - (Optional) Can be one of <code>READ_ONLY</code>, <code>WRITABLE</code>, or <code>UNSYNCED</code>. <code>UNSYNCED</code> allows user data to be imported but not synced back to LDAP. Defaults to <code>READ_ONLY</code>.</li>
 <li><code>sync_registrations</code> - (Optional) When <code>true</code>, newly created users will be synced back to LDAP. Defaults to <code>false</code>.</li>
-<li><code>vendor</code> - (Optional) Can be one of <code>OTHER</code>, <code>EDIRECTORY</code>, <code>AD</code>, <code>RHDS</code>, or <code>TIVOLI</code>. When this is selected in the GUI, it provides reasonable defaults for other fields. When used with the Keycloak API, this attribute does nothing, but is still required. Defaults to <code>OPTIONAL</code>.</li>
+<li><code>vendor</code> - (Optional) Can be one of <code>OTHER</code>, <code>EDIRECTORY</code>, <code>AD</code>, <code>RHDS</code>, or <code>TIVOLI</code>. When this is selected in the GUI, it provides reasonable defaults for other fields. When used with the Keycloak API, this attribute does nothing, but is still required. Defaults to <code>OTHER</code>.</li>
 <li><code>username_ldap_attribute</code> - (Required) Name of the LDAP attribute to use as the Keycloak username.</li>
 <li><code>rdn_ldap_attribute</code> - (Required) Name of the LDAP attribute to use as the relative distinguished name.</li>
 <li><code>uuid_ldap_attribute</code> - (Required) Name of the LDAP attribute to use as a unique object identifier for objects in LDAP.</li>

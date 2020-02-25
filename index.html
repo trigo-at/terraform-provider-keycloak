@@ -245,6 +245,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="resources/keycloak_oidc_identity_provider/">keycloak_oidc_identity_provider</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="resources/keycloak_attribute_importer_identity_provider_mapper/">keycloak_attribute_importer_identity_provider_mapper</a>
                 </li>
     </ul>
@@ -338,6 +342,7 @@ the realm clients to a user or service account within the <code>master</code> re
 <li><code>realm</code> (Optional) - The realm used by the provider for authentication. Defaults to environment variable <code>KEYCLOAK_REALM</code>, or <code>master</code> if the environment variable is not specified.</li>
 <li><code>initial_login</code> (Optional) - Optionally avoid Keycloak login during provider setup, for when Keycloak itself is being provisioned by terraform. Defaults to true, which is the original method.</li>
 <li><code>client_timeout</code> (Optional) - Sets the timeout of the client when addressing Keycloak, in seconds. Defaults to environment variable <code>KEYCLOAK_CLIENT_TIMEOUT</code>, or 5 is the environment variable is not specified.</li>
+<li><code>root_ca_certificate</code> (Optional) - Allows x509 calls using an unknown CA certificate (for development purposes)</li>
 </ul>
 <h4 id="example-client-credentials">Example (client credentials)</h4>
 <pre><code class="hcl">provider &quot;keycloak&quot; {
@@ -405,5 +410,5 @@ the realm clients to a user or service account within the <code>master</code> re
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-02-13 16:01:26
+Build Date UTC : 2020-02-25 15:52:31
 -->

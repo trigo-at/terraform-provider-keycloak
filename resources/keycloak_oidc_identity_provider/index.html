@@ -298,7 +298,6 @@ resource &quot;keycloak_oidc_identity_provider&quot; &quot;realm_identity_provid
   token_url         = &quot;https://tokenurl.com&quot;
 
   extra_config = {
-    &quot;acceptsPromptNoneForwardFromClient&quot; = &quot;&quot;
     &quot;clientAuthMethod&quot;                   = &quot;client_secret_post&quot;
   }
 }
@@ -313,8 +312,7 @@ resource &quot;keycloak_oidc_identity_provider&quot; &quot;realm_identity_provid
 <li><code>client_id</code> - (Required) The client or client identifier registered within the identity provider.</li>
 <li><code>client_secret</code> - (Required) The client or client secret registered within the identity provider. This field is able to obtain its value from vault, use $${vault.ID} format.</li>
 <li><code>token_url</code> - (Required) The Token URL.</li>
-<li><code>extra_config</code> - (Optional) this block is needed to set extra configuration<ul>
-<li><code>acceptsPromptNoneForwardFromClient</code> (Optional) Specifies whether the IDP accepts forwarded authentication requests that contain the prompt=none query parameter or not</li>
+<li><code>extra_config</code> - (Optional) this block is needed to set extra configuration (Not yet supported variables or custom extensions)<ul>
 <li><code>clientAuthMethod</code> (Optional) The client authentication method. Since Keycloak 8, this is a required attribute if OIDC provider is created over the Keycloak Userinterface.
 It accepts the values <code>client_secret_post</code> (Client secret sent as post), <code>client_secret_basic</code> (Client secret sent as basic auth), <code>client_secret_jwt</code> (Client secret as jwt) and <code>private_key_jwt</code> (JTW signed with private key)</li>
 </ul>
@@ -328,6 +326,8 @@ It accepts the values <code>client_secret_post</code> (Client secret sent as pos
 <li><code>logout_url</code> - (Optional) The Logout URL is the end session endpoint to use to logout user from external identity provider.</li>
 <li><code>login_hint</code> - (Optional) Pass login hint to identity provider.</li>
 <li><code>ui_locales</code> - (Optional) Pass current locale to identity provider. Defaults to <code>false</code>.</li>
+<li><code>accepts_prompt_none_forward_from_client</code> (Optional) Specifies whether the IDP accepts forwarded authentication requests that contain the prompt=none query parameter or not</li>
+<li><code>default_scopes</code> - (Optional) The scopes to be sent when asking for authorization. It can be a space-separated list of scopes. Defaults to 'openid'.</li>
 </ul>
 <h3 id="import">Import</h3>
 <p>Identity providers can be imported using the format <code>{{realm_id}}/{{idp_alias}}</code>, where <code>idp_alias</code> is the identity provider alias.</p>

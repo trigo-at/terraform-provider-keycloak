@@ -2,202 +2,202 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/data_sources/keycloak_group/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/data_sources/keycloak_openid_client/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/data_sources/keycloak_realm/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/data_sources/keycloak_realm_keys/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/data_sources/keycloak_role/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_realm/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_realm_events/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_user/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_role/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_group/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_group_memberships/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_group_roles/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_default_groups/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_client/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_client_scope/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_client_default_scopes/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_client_optional_scopes/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_user_attribute_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_user_property_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_group_membership_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_hardcoded_claim_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_full_name_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_audience_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_hardcoded_role_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_user_realm_role_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_saml_client/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_saml_user_attribute_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_saml_user_property_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_generic_client_protocol_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_ldap_user_federation/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_ldap_full_name_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_ldap_group_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_ldap_hardcoded_role_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_ldap_msad_user_account_control_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_ldap_user_attribute_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_custom_user_federation/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_saml_identity_provider/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_oidc_identity_provider/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_attribute_importer_identity_provider_mapper/</loc>
-     <lastmod>2020-03-12</lastmod>
+     <lastmod>2020-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

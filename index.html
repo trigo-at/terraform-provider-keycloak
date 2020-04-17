@@ -342,6 +342,7 @@ the realm clients to a user or service account within the <code>master</code> re
 <li><code>realm</code> (Optional) - The realm used by the provider for authentication. Defaults to environment variable <code>KEYCLOAK_REALM</code>, or <code>master</code> if the environment variable is not specified.</li>
 <li><code>initial_login</code> (Optional) - Optionally avoid Keycloak login during provider setup, for when Keycloak itself is being provisioned by terraform. Defaults to true, which is the original method.</li>
 <li><code>client_timeout</code> (Optional) - Sets the timeout of the client when addressing Keycloak, in seconds. Defaults to environment variable <code>KEYCLOAK_CLIENT_TIMEOUT</code>, or 5 is the environment variable is not specified.</li>
+<li><code>tls_insecure_skip_verify</code> (Optional) - Allows ignoring insecure certificates when set to true. Defaults to false. Disabling security check is dangerous and should be avoided.</li>
 <li><code>root_ca_certificate</code> (Optional) - Allows x509 calls using an unknown CA certificate (for development purposes)</li>
 </ul>
 <h4 id="example-client-credentials">Example (client credentials)</h4>
@@ -410,5 +411,5 @@ the realm clients to a user or service account within the <code>master</code> re
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2020-03-12 16:11:39
+Build Date UTC : 2020-04-17 17:20:00
 -->

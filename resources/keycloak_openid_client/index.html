@@ -332,11 +332,21 @@ should be treated with the same care as a password. If omitted, Keycloak will ge
 wildcards in the form of an asterisk can be used here. This attribute must be set if either <code>standard_flow_enabled</code> or <code>implicit_flow_enabled</code>
 is set to <code>true</code>.</li>
 <li><code>web_origins</code> - (Optional) A list of allowed CORS origins. <code>+</code> can be used to permit all valid redirect URIs, and <code>*</code> can be used to permit all origins.</li>
+<li><code>root_url</code> - (Optional) When specified, this URL is prepended to any relative URLs found within <code>valid_redirect_uris</code>, <code>web_origins</code>, and <code>admin_url</code>.<ul>
+<li>NOTE: Due to limitations in the Keycloak API, when the <code>root_url</code> attribute is used, the <code>valid_redirect_uris</code>, <code>web_origins</code>, and <code>admin_url</code> attributes will be required.</li>
+</ul>
+</li>
 <li><code>admin_url</code> - (Optional) URL to the admin interface of the client.</li>
 <li><code>base_url</code> - (Optional) Default URL to use when the auth server needs to redirect or link back to the client.</li>
 <li><code>pkce_code_challenge_method</code> - (Optional) The challenge method to use for Proof Key for Code Exchange. Can be either <code>plain</code> or <code>S256</code> or set to empty value ``.</li>
 <li><code>full_scope_allowed</code> - (Optional) - Allow to include all roles mappings in the access token.</li>
 <li><code>access_token_lifespan</code> - (Optional) - Allow to set the lifespan of the access token</li>
+<li><code>consent_required</code> - (Optional) - Consent Required: If enabled, users have to consent to client access.</li>
+<li><code>authentication_flow_binding_overrides</code> - (Optional) - Override realm authentication flow bindings<ul>
+<li><code>browers_id</code> - (Optional) - Browser flow id, (flow needs to exist)</li>
+<li><code>direct_grant_id</code> - (Optional) - Direct grant flow id (flow needs to exist)</li>
+</ul>
+</li>
 </ul>
 <h3 id="attributes-reference">Attributes Reference</h3>
 <p>In addition to the arguments listed above, the following computed attributes are exported:</p>

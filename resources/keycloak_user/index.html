@@ -321,6 +321,10 @@ resource &quot;keycloak_user&quot; &quot;user_with_initial_password&quot; {
     first_name = &quot;Alice&quot;
     last_name  = &quot;Aliceberg&quot;
 
+    attributes = {
+      foo = &quot;bar&quot;
+    }
+
     initial_password {
       value     = &quot;some password&quot;
       temporary = true
@@ -344,6 +348,13 @@ resource &quot;keycloak_user&quot; &quot;user_with_initial_password&quot; {
 <li><code>email_verified</code> - (Optional) Whether the email address was validated or not. Default to <code>false</code>.</li>
 <li><code>first_name</code> - (Optional) The user's first name.</li>
 <li><code>last_name</code> - (Optional) The user's last name.</li>
+<li><code>attributes</code> - (Optional) A map representing attributes for the user</li>
+<li><code>federated_identity</code> - (Optional) When specified, the user will be linked to a federated identity provider. Refer to the <a href="https://github.com/mrparkers/terraform-provider-keycloak/blob/master/example/federated_user_example.tf">federated user example</a> for more details.<ul>
+<li><code>identity_provider</code> - (Required) The name of the identity provider</li>
+<li><code>user_id</code> - (Required) The ID of the user defined in the identity provider</li>
+<li><code>user_name</code> - (Required) The user name of the user defined in the identity provider</li>
+</ul>
+</li>
 </ul>
 <h3 id="import">Import</h3>
 <p>Users can be imported using the format <code>{{realm_id}}/{{user_id}}</code>, where <code>user_id</code> is the unique ID that Keycloak

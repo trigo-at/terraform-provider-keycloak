@@ -315,6 +315,8 @@ resource &quot;keycloak_openid_client&quot; &quot;openid_client&quot; {
     valid_redirect_uris = [
         &quot;http://localhost:8080/openid-callback&quot;
     ]
+
+    login_theme = &quot;keycloak&quot;
 }
 </code></pre>
 
@@ -359,6 +361,7 @@ is set to <code>true</code>.</li>
 <li><code>direct_grant_id</code> - (Optional) - Direct grant flow id (flow needs to exist)</li>
 </ul>
 </li>
+<li><code>login_theme</code> - (Optional) - Override realm login theme</li>
 </ul>
 <h3 id="attributes-reference">Attributes Reference</h3>
 <p>In addition to the arguments listed above, the following computed attributes are exported:</p>

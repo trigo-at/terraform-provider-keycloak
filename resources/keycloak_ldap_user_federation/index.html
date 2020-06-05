@@ -171,6 +171,14 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../keycloak_openid_user_client_role_protocol_mapper/">keycloak_openid_user_client_role_protocol_mapper</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keycloak_openid_user_session_note_protocol_mapper/">keycloak_openid_user_session_note_protocol_mapper</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../keycloak_saml_client/">keycloak_saml_client</a>
                 </li>
                 <li class="">
@@ -323,6 +331,12 @@ resource &quot;keycloak_ldap_user_federation&quot; &quot;ldap_user_federation&qu
 
     connection_timeout      = &quot;5s&quot;
     read_timeout            = &quot;10s&quot;
+
+    kerberos {
+        kerberos_realm = &quot;FOO.LOCAL&quot;
+        server_principal = &quot;HTTP/host.foo.com@FOO.LOCAL&quot;
+        keytab = &quot;/etc/host.keytab&quot;
+    }
 }
 </code></pre>
 
@@ -365,6 +379,11 @@ resource &quot;keycloak_ldap_user_federation&quot; &quot;ldap_user_federation&qu
 <li><code>full_sync_period</code> - (Optional) How frequently Keycloak should sync all LDAP users, in seconds. Omit this property to disable periodic full sync.</li>
 <li><code>changed_sync_period</code> - (Optional) How frequently Keycloak should sync changed LDAP users, in seconds. Omit this property to disable periodic changed users sync.</li>
 <li><code>cache_policy</code> - (Optional) Can be one of <code>DEFAULT</code>, <code>EVICT_DAILY</code>, <code>EVICT_WEEKLY</code>, <code>MAX_LIFESPAN</code>, or <code>NO_CACHE</code>. Defaults to <code>DEFAULT</code>.</li>
+<li><code>kerberos</code> - (Optional) A block containing the kerberos settings.</li>
+<li><code>kerberos_realm</code> - (Required) The name of the kerberos realm, e.g. FOO.LOCAL.</li>
+<li><code>server_principal</code> - (Required) The kerberos server principal, e.g. 'HTTP/host.foo.com@FOO.LOCAL'.</li>
+<li><code>key_tab</code> - (Required) Path to the kerberos keytab file on the server with credentials of the service principal.</li>
+<li><code>use_kerberos_for_password_authentication</code> - (Optional) Use kerberos login module instead of ldap service api. Defaults to <code>false</code>.</li>
 </ul>
 <h3 id="import">Import</h3>
 <p>LDAP user federation providers can be imported using the format <code>{{realm_id}}/{{ldap_user_federation_id}}</code>.

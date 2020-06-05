@@ -102,6 +102,8 @@
         
             <li><a class="toctree-l4" href="#argument-reference">Argument Reference</a></li>
         
+            <li><a class="toctree-l4" href="#attributes-reference">Attributes Reference</a></li>
+        
             <li><a class="toctree-l4" href="#import">Import</a></li>
         
         </ul>
@@ -184,6 +186,14 @@
                 <li class="">
                     
     <a class="" href="../keycloak_openid_user_realm_role_protocol_mapper/">keycloak_openid_user_realm_role_protocol_mapper</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keycloak_openid_user_client_role_protocol_mapper/">keycloak_openid_user_client_role_protocol_mapper</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keycloak_openid_user_session_note_protocol_mapper/">keycloak_openid_user_session_note_protocol_mapper</a>
                 </li>
                 <li class="">
                     
@@ -360,6 +370,7 @@ Users log in to realms and can be federated from multiple sources.</p>
 <li><code>enabled</code> - (Optional) When false, users and clients will not be able to access this realm. Defaults to <code>true</code>.</li>
 <li><code>display_name</code> - (Optional) The display name for the realm that is shown when logging in to the admin console.</li>
 <li><code>display_name_html</code> - (Optional) The display name for the realm that is rendered as HTML on the screen when logging in to the admin console.</li>
+<li><code>user_managed_access</code> - (Optional) When true, users are allowed to manage their own resources. Defaults to <code>false</code>.</li>
 </ul>
 <h5 id="login-settings">Login Settings</h5>
 <p>The following attributes are all booleans, and can be found in the "Login" tab within the realm settings.
@@ -430,7 +441,7 @@ This block supports the following attributes:</p>
 <li><code>default_locale</code> - (Required) The locale to use by default. This locale code must be present within the <code>supported_locales</code> list.</li>
 </ul>
 <h5 id="security-defenses-headers">Security Defenses Headers</h5>
-<p>Header configuration support for browser security settings and brute force detection. It can be configured trough the<code>security_defenses</code> block using the <code>headers</code> and the <code>brute_force_detection</code> subblocks. </p>
+<p>Header configuration support for browser security settings and brute force detection. It can be configured trough the<code>security_defenses</code> block using the <code>headers</code> and the <code>brute_force_detection</code> subblocks.</p>
 <p>The <code>headers</code> block supports the following attributes:</p>
 <ul>
 <li><code>x_frame_options</code> - (Optional) Sets the x-frame-option, could be used for prevent pages from being included by non-origin iframes. More Infos could be found in the <a href="https://tools.ietf.org/html/rfc7034">RFC7034</a></li>
@@ -453,6 +464,11 @@ This block supports the following attributes:</p>
 </ul>
 <h4 id="atributes">Atributes</h4>
 <p>Map, can be used to add custom attributes to a realm. Or perhaps influence a certain attribute that is not supported in this terraform-provider</p>
+<h3 id="attributes-reference">Attributes Reference</h3>
+<p>In addition to the arguments listed above, the following computed attributes are exported:</p>
+<ul>
+<li><code>internal_id</code> - When importing realms created outside of this terraform provider, they could use generated arbitrary IDs for the technical realm id. Realms created by this provider always use the realm's name for its technical id.</li>
+</ul>
 <h3 id="import">Import</h3>
 <p>Realms can be imported using their name:</p>
 <pre><code class="bash">$ terraform import keycloak_realm.realm test

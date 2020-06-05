@@ -187,6 +187,14 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../../resources/keycloak_openid_user_client_role_protocol_mapper/">keycloak_openid_user_client_role_protocol_mapper</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../resources/keycloak_openid_user_session_note_protocol_mapper/">keycloak_openid_user_session_note_protocol_mapper</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../../resources/keycloak_saml_client/">keycloak_saml_client</a>
                 </li>
                 <li class="">
@@ -302,7 +310,7 @@ usage with other resources.</p>
 # use the data source
 
 resource &quot;keycloak_role&quot; &quot;group&quot; {
-    realm_id = &quot;${data.keycloak_realm.id}&quot;
+    realm_id = &quot;${data.keycloak_realm.realm.id}&quot;
     name     = &quot;group&quot;
 }
 

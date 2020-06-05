@@ -189,6 +189,14 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../keycloak_openid_user_client_role_protocol_mapper/">keycloak_openid_user_client_role_protocol_mapper</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keycloak_openid_user_session_note_protocol_mapper/">keycloak_openid_user_session_note_protocol_mapper</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../keycloak_saml_client/">keycloak_saml_client</a>
                 </li>
                 <li class="">
@@ -357,7 +365,7 @@ resource &quot;keycloak_openid_user_realm_role_protocol_mapper&quot; &quot;user_
 <li><code>name</code> - (Required) The display name of this protocol mapper in the GUI.</li>
 <li><code>claim_name</code> - (Required) The name of the claim to insert into a token.</li>
 <li><code>claim_value_type</code> - (Optional) The claim type used when serializing JSON tokens. Can be one of <code>String</code>, <code>JSON</code>, <code>long</code>, <code>int</code>, or <code>boolean</code>. Defaults to <code>String</code>.</li>
-<li><code>multivalued</code> - (Optional) Indicates if attribute supports multiple values. If true, then the list of all values of this attribute will be set as claim. If false, then just first value will be set as claim. Defaults to <code>true</code>.</li>
+<li><code>multivalued</code> - (Optional) Indicates if attribute supports multiple values. If true, then the list of all values of this attribute will be set as claim. If false, then just first value will be set as claim. Defaults to <code>false</code>.</li>
 <li><code>realm_role_prefix</code> - (Optional) A prefix for each Realm Role.</li>
 <li><code>add_to_id_token</code> - (Optional) Indicates if the property should be added as a claim to the id token. Defaults to <code>true</code>.</li>
 <li><code>add_to_access_token</code> - (Optional) Indicates if the property should be added as a claim to the access token. Defaults to <code>true</code>.</li>
@@ -378,7 +386,7 @@ $ terraform import keycloak_openid_user_realm_role_protocol_mapper.user_realm_ro
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../keycloak_saml_client/" class="btn btn-neutral float-right" title="keycloak_saml_client">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../keycloak_openid_user_client_role_protocol_mapper/" class="btn btn-neutral float-right" title="keycloak_openid_user_client_role_protocol_mapper">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../keycloak_openid_hardcoded_role_protocol_mapper/" class="btn btn-neutral" title="keycloak_openid_hardcoded_role_protocol_mapper"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -412,7 +420,7 @@ $ terraform import keycloak_openid_user_realm_role_protocol_mapper.user_realm_ro
         <span><a href="../keycloak_openid_hardcoded_role_protocol_mapper/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../keycloak_saml_client/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../keycloak_openid_user_client_role_protocol_mapper/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

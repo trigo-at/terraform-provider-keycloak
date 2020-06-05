@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>keycloak_openid_client_default_scopes - Terraform Provider: Keycloak</title>
+  <title>keycloak_openid_user_client_role_protocol_mapper - Terraform Provider: Keycloak</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "keycloak_openid_client_default_scopes";
-    var mkdocs_page_input_path = "resources/keycloak_openid_client_default_scopes.md";
-    var mkdocs_page_url = "/terraform-provider-keycloak/resources/keycloak_openid_client_default_scopes/";
+    var mkdocs_page_name = "keycloak_openid_user_client_role_protocol_mapper";
+    var mkdocs_page_input_path = "resources/keycloak_openid_user_client_role_protocol_mapper.md";
+    var mkdocs_page_url = "/terraform-provider-keycloak/resources/keycloak_openid_user_client_role_protocol_mapper/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -129,25 +129,9 @@
                     
     <a class="" href="../keycloak_openid_client_scope/">keycloak_openid_client_scope</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">keycloak_openid_client_default_scopes</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#keycloak_openid_client_default_scopes">keycloak_openid_client_default_scopes</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#example-usage">Example Usage</a></li>
-        
-            <li><a class="toctree-l4" href="#argument-reference">Argument Reference</a></li>
-        
-            <li><a class="toctree-l4" href="#import">Import</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../keycloak_openid_client_default_scopes/">keycloak_openid_client_default_scopes</a>
                 </li>
                 <li class="">
                     
@@ -185,9 +169,27 @@
                     
     <a class="" href="../keycloak_openid_user_realm_role_protocol_mapper/">keycloak_openid_user_realm_role_protocol_mapper</a>
                 </li>
-                <li class="">
+                <li class=" current">
                     
-    <a class="" href="../keycloak_openid_user_client_role_protocol_mapper/">keycloak_openid_user_client_role_protocol_mapper</a>
+    <a class="current" href="./">keycloak_openid_user_client_role_protocol_mapper</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#keycloak_openid_user_client_role_protocol_mapper">keycloak_openid_user_client_role_protocol_mapper</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#example-usage-client">Example Usage (Client)</a></li>
+        
+            <li><a class="toctree-l4" href="#example-usage-client-scope">Example Usage (Client Scope)</a></li>
+        
+            <li><a class="toctree-l4" href="#argument-reference">Argument Reference</a></li>
+        
+            <li><a class="toctree-l4" href="#import">Import</a></li>
+        
+        </ul>
+    
+
+    </ul>
                 </li>
                 <li class="">
                     
@@ -286,10 +288,10 @@
         
       
     
-    <li>keycloak_openid_client_default_scopes</li>
+    <li>keycloak_openid_user_client_role_protocol_mapper</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/mrparkers/terraform-provider-keycloak/edit/master/docs/resources/keycloak_openid_client_default_scopes.md"
+        <a href="https://github.com/mrparkers/terraform-provider-keycloak/edit/master/docs/resources/keycloak_openid_user_client_role_protocol_mapper.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -299,63 +301,77 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="keycloak_openid_client_default_scopes">keycloak_openid_client_default_scopes</h1>
-<p>Allows for managing a Keycloak client's default client scopes. A default
-scope that is attached to a client using the OpenID Connect protocol will
-automatically use the protocol mappers defined within that scope to build
-claims for this client regardless of the provided OAuth2.0 <code>scope</code> parameter.</p>
-<p>Note that this resource attempts to be an <strong>authoritative</strong> source over
-default scopes for a Keycloak client using the OpenID Connect protocol.
-This means that once Terraform controls a particular client's default scopes,
-it will attempt to remove any default scopes that were attached manually,
-and it will attempt to add any default scopes that were detached manually.</p>
-<p>By default, Keycloak sets the <code>profile</code>, <code>email</code>, <code>roles</code>, and <code>web-origins</code>
-scopes as default scopes for every newly created client. If you create this
-resource for the first time and do not include these scopes, a following run
-of <code>terraform plan</code> will result in changes.</p>
-<h3 id="example-usage">Example Usage</h3>
+                <h1 id="keycloak_openid_user_client_role_protocol_mapper">keycloak_openid_user_client_role_protocol_mapper</h1>
+<p>Allows for creating and managing user client role protocol mappers within
+Keycloak.</p>
+<p>User client role protocol mappers allow you to define a claim containing the list of a client roles.
+Protocol mappers can be defined for a single client, or they can
+be defined for a client scope which can be shared between multiple different
+clients.</p>
+<h3 id="example-usage-client">Example Usage (Client)</h3>
 <pre><code class="hcl">resource &quot;keycloak_realm&quot; &quot;realm&quot; {
     realm   = &quot;my-realm&quot;
     enabled = true
 }
-
-resource &quot;keycloak_openid_client&quot; &quot;client&quot; {
-    realm_id    = &quot;${keycloak_realm.realm.id}&quot;
-    client_id   = &quot;test-client&quot;
-
-    access_type = &quot;CONFIDENTIAL&quot;
+resource &quot;keycloak_openid_client&quot; &quot;openid_client&quot; {
+    realm_id            = &quot;${keycloak_realm.realm.id}&quot;
+    client_id           = &quot;test-client&quot;
+    name                = &quot;test client&quot;
+    enabled             = true
+    access_type         = &quot;CONFIDENTIAL&quot;
+    valid_redirect_uris = [
+        &quot;http://localhost:8080/openid-callback&quot;
+    ]
 }
+resource &quot;keycloak_openid_user_client_role_protocol_mapper&quot; &quot;user_client_role_mapper&quot; {
+    realm_id    = &quot;${keycloak_realm.realm.id}&quot;
+    client_id   = &quot;${keycloak_openid_client.openid_client.id}&quot;
+    name        = &quot;user-client-role-mapper&quot;
+    claim_name  = &quot;foo&quot;
+}
+</code></pre>
 
+<h3 id="example-usage-client-scope">Example Usage (Client Scope)</h3>
+<pre><code class="hcl">resource &quot;keycloak_realm&quot; &quot;realm&quot; {
+    realm   = &quot;my-realm&quot;
+    enabled = true
+}
 resource &quot;keycloak_openid_client_scope&quot; &quot;client_scope&quot; {
     realm_id = &quot;${keycloak_realm.realm.id}&quot;
     name     = &quot;test-client-scope&quot;
 }
-
-resource &quot;keycloak_openid_client_default_scopes&quot; &quot;client_default_scopes&quot; {
-    realm_id       = &quot;${keycloak_realm.realm.id}&quot;
-    client_id      = &quot;${keycloak_openid_client.client.id}&quot;
-
-    default_scopes = [
-        &quot;profile&quot;,
-        &quot;email&quot;,
-        &quot;roles&quot;,
-        &quot;web-origins&quot;,
-        &quot;${keycloak_openid_client_scope.client_scope.name}&quot;
-    ]
+resource &quot;keycloak_openid_user_client_role_protocol_mapper&quot; &quot;user_client_role_mapper&quot; {
+    realm_id        = &quot;${keycloak_realm.realm.id}&quot;
+    client_scope_id = &quot;${keycloak_openid_client_scope.client_scope.id}&quot;
+    name            = &quot;user-client-role-mapper&quot;
+    claim_name      = &quot;foo&quot;
 }
-
 </code></pre>
 
 <h3 id="argument-reference">Argument Reference</h3>
 <p>The following arguments are supported:</p>
 <ul>
-<li><code>realm_id</code> - (Required) The realm this client and scopes exists in.</li>
-<li><code>client_id</code> - (Required) The ID of the client to attach default scopes to. Note that this is the unique ID of the client generated by Keycloak.</li>
-<li><code>default_scopes</code> - (Required) An array of client scope names to attach to this client.</li>
+<li><code>realm_id</code> - (Required) The realm this protocol mapper exists within.</li>
+<li><code>client_id</code> - (Required if <code>client_scope_id</code> is not specified) The client this protocol mapper is attached to.</li>
+<li><code>client_scope_id</code> - (Required if <code>client_id</code> is not specified) The client scope this protocol mapper is attached to.</li>
+<li><code>name</code> - (Required) The display name of this protocol mapper in the GUI.</li>
+<li><code>claim_name</code> - (Required) The name of the claim to insert into a token.</li>
+<li><code>claim_value_type</code> - (Optional) The claim type used when serializing JSON tokens. Can be one of <code>String</code>, <code>JSON</code>, <code>long</code>, <code>int</code>, or <code>boolean</code>. Defaults to <code>String</code>.</li>
+<li><code>multivalued</code> - (Optional) Indicates if attribute supports multiple values. If true, then the list of all values of this attribute will be set as claim. If false, then just first value will be set as claim. Defaults to <code>false</code>.</li>
+<li><code>client_id_for_role_mappings</code> - (Optional) The Client ID for role mappings. Just client roles of this client will be added to the token. If this is unset, client roles of all clients will be added to the token. </li>
+<li><code>client_role_prefix</code> - (Optional) A prefix for each Client Role.</li>
+<li><code>add_to_id_token</code> - (Optional) Indicates if the property should be added as a claim to the id token. Defaults to <code>true</code>.</li>
+<li><code>add_to_access_token</code> - (Optional) Indicates if the property should be added as a claim to the access token. Defaults to <code>true</code>.</li>
+<li><code>add_to_userinfo</code> - (Optional) Indicates if the property should be added as a claim to the UserInfo response body. Defaults to <code>true</code>.</li>
 </ul>
 <h3 id="import">Import</h3>
-<p>This resource does not support import. Instead of importing, feel free to create this resource
-as if it did not already exist on the server.</p>
+<p>Protocol mappers can be imported using one of the following formats:
+- Client: <code>{{realm_id}}/client/{{client_keycloak_id}}/{{protocol_mapper_id}}</code>
+- Client Scope: <code>{{realm_id}}/client-scope/{{client_scope_keycloak_id}}/{{protocol_mapper_id}}</code></p>
+<p>Example:</p>
+<pre><code class="bash">$ terraform import keycloak_openid_user_client_role_protocol_mapper.user_client_role_mapper my-realm/client/a7202154-8793-4656-b655-1dd18c181e14/71602afa-f7d1-4788-8c49-ef8fd00af0f4
+$ terraform import keycloak_openid_user_client_role_protocol_mapper.user_client_role_mapper my-realm/client-scope/b799ea7e-73ee-4a73-990a-1eafebe8e20a/71602afa-f7d1-4788-8c49-ef8fd00af0f4
+</code></pre>
               
             </div>
           </div>
@@ -363,10 +379,10 @@ as if it did not already exist on the server.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../keycloak_openid_client_optional_scopes/" class="btn btn-neutral float-right" title="keycloak_openid_client_optional_scopes">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../keycloak_openid_user_session_note_protocol_mapper/" class="btn btn-neutral float-right" title="keycloak_openid_user_session_note_protocol_mapper">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../keycloak_openid_client_scope/" class="btn btn-neutral" title="keycloak_openid_client_scope"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../keycloak_openid_user_realm_role_protocol_mapper/" class="btn btn-neutral" title="keycloak_openid_user_realm_role_protocol_mapper"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -394,10 +410,10 @@ as if it did not already exist on the server.</p>
           <a href="https://github.com/mrparkers/terraform-provider-keycloak/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../keycloak_openid_client_scope/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../keycloak_openid_user_realm_role_protocol_mapper/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../keycloak_openid_client_optional_scopes/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../keycloak_openid_user_session_note_protocol_mapper/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

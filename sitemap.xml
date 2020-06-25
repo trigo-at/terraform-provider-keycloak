@@ -146,6 +146,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_openid_client_service_account_role/</loc>
+     <lastmod>2020-06-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_saml_client/</loc>
      <lastmod>2020-06-25</lastmod>
      <changefreq>daily</changefreq>

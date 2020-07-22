@@ -99,11 +99,15 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../keycloak_role/">keycloak_role</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../keycloak_user/">keycloak_user</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../keycloak_role/">keycloak_role</a>
+    <a class="" href="../keycloak_user_roles/">keycloak_user_roles</a>
                 </li>
                 <li class="">
                     
@@ -340,6 +344,7 @@ resource &quot;keycloak_custom_user_federation&quot; &quot;custom_user_federatio
 <li><code>enabled</code> - (Optional) When <code>false</code>, this provider will not be used when performing queries for users. Defaults to <code>true</code>.</li>
 <li><code>priority</code> - (Optional) Priority of this provider when looking up users. Lower values are first. Defaults to <code>0</code>.</li>
 <li><code>cache_policy</code> - (Optional) Can be one of <code>DEFAULT</code>, <code>EVICT_DAILY</code>, <code>EVICT_WEEKLY</code>, <code>MAX_LIFESPAN</code>, or <code>NO_CACHE</code>. Defaults to <code>DEFAULT</code>.</li>
+<li><code>parent_id</code> - (Optional) Must be set to the realms' <code>internal_id</code>  when it differs from the realm. This can happen when existing resources are imported into the state.</li>
 </ul>
 <h3 id="import">Import</h3>
 <p>Custom user federation providers can be imported using the format <code>{{realm_id}}/{{custom_user_federation_id}}</code>.

@@ -99,11 +99,15 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../keycloak_role/">keycloak_role</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../keycloak_user/">keycloak_user</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../keycloak_role/">keycloak_role</a>
+    <a class="" href="../keycloak_user_roles/">keycloak_user_roles</a>
                 </li>
                 <li class="">
                     
@@ -324,9 +328,11 @@ claims or roles for a user based on the OAuth 2.0 <code>scope</code> parameter.<
 }
 
 resource &quot;keycloak_openid_client_scope&quot; &quot;openid_client_scope&quot; {
-    realm_id    = &quot;${keycloak_realm.realm.id}&quot;
-    name        = &quot;groups&quot;
-    description = &quot;When requested, this scope will map a user's group memberships to a claim&quot;
+    realm_id               = &quot;${keycloak_realm.realm.id}&quot;
+    name                   = &quot;groups&quot;
+    description            = &quot;When requested, this scope will map a user's group memberships to a claim&quot;
+    include_in_token_scope = true
+    gui_order              = 1
 }
 </code></pre>
 
@@ -339,6 +345,8 @@ resource &quot;keycloak_openid_client_scope&quot; &quot;openid_client_scope&quot
 <li><code>consent_screen_text</code> - (Optional) When set, a consent screen will be displayed to users
 authenticating to clients with this scope attached. The consent screen will display the string
 value of this attribute.</li>
+<li><code>include_in_token_scope</code> - (Optional) When <code>true</code>, the name of this client scope will be added to the access token property 'scope' as well as to the Token Introspection Endpoint response.</li>
+<li><code>gui_order</code> - (Optional) Specify order of the client scope in GUI (such as in Consent page) as integer.</li>
 </ul>
 <h3 id="import">Import</h3>
 <p>Client scopes can be imported using the format <code>{{realm_id}}/{{client_scope_id}}</code>, where <code>client_scope_id</code> is the unique ID that Keycloak

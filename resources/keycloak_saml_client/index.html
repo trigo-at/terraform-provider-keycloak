@@ -99,11 +99,15 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../keycloak_role/">keycloak_role</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../keycloak_user/">keycloak_user</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../keycloak_role/">keycloak_role</a>
+    <a class="" href="../keycloak_user_roles/">keycloak_user_roles</a>
                 </li>
                 <li class="">
                     
@@ -347,15 +351,18 @@ resource &quot;keycloak_saml_client&quot; &quot;saml_client&quot; {
 <li><code>include_authn_statement</code> - (Optional) When <code>true</code>, an <code>AuthnStatement</code> will be included in the SAML response.</li>
 <li><code>sign_documents</code> - (Optional) When <code>true</code>, the SAML document will be signed by Keycloak using the realm's private key.</li>
 <li><code>sign_assertions</code> - (Optional) When <code>true</code>, the SAML assertions will be signed by Keycloak using the realm's private key, and embedded within the SAML XML Auth response.</li>
+<li><code>encrypt_assertions</code> - (Optional) When <code>true</code>, the SAML assertions will be encrypted by Keycloak using the client's public key.</li>
 <li><code>client_signature_required</code> - (Optional) When <code>true</code>, Keycloak will expect that documents originating from a client will be signed using the certificate and/or key configured via <code>signing_certificate</code> and <code>signing_private_key</code>.</li>
 <li><code>force_post_binding</code> - (Optional) When <code>true</code>, Keycloak will always respond to an authentication request via the SAML POST Binding.</li>
 <li><code>front_channel_logout</code> - (Optional) When <code>true</code>, this client will require a browser redirect in order to perform a logout.</li>
 <li><code>name_id_format</code> - (Optional) Sets the Name ID format for the subject.</li>
 <li><code>force_name_id_format</code> - (Optional) Ignore requested NameID subject format and use the one defined in <code>name_id_format</code> instead.</li>
+<li><code>signature_algorithm</code> - (Optional) The signature algorithm used to sign documents. Should be one of "RSA_SHA1", "RSA_SHA256", "RSA_SHA512", or "DSA_SHA1".</li>
 <li><code>root_url</code> - (Optional) When specified, this value is prepended to all relative URLs.</li>
 <li><code>valid_redirect_uris</code> - (Optional) When specified, Keycloak will use this list to validate given Assertion Consumer URLs specified in the authentication request.</li>
 <li><code>base_url</code> - (Optional) When specified, this URL will be used whenever Keycloak needs to link to this client.</li>
 <li><code>master_saml_processing_url</code> - (Optional) When specified, this URL will be used for all SAML requests.</li>
+<li><code>encryption_certificate</code> - (Optional) If assertions for the client are encrypted, this certificate will be used for encryption.</li>
 <li><code>signing_certificate</code> - (Optional) If documents or assertions from the client are signed, this certificate will be used to verify the signature.</li>
 <li><code>signing_private_key</code> - (Optional) If documents or assertions from the client are signed, this private key will be used to verify the signature.</li>
 <li><code>idp_initiated_sso_url_name</code> - (Optional) URL fragment name to reference client when you want to do IDP Initiated SSO.</li>

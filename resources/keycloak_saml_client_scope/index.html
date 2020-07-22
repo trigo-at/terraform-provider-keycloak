@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>keycloak_openid_client - Terraform Provider: Keycloak</title>
+  <title>keycloak_saml_client_scope - Terraform Provider: Keycloak</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "keycloak_openid_client";
-    var mkdocs_page_input_path = "resources/keycloak_openid_client.md";
-    var mkdocs_page_url = "/terraform-provider-keycloak/resources/keycloak_openid_client/";
+    var mkdocs_page_name = "keycloak_saml_client_scope";
+    var mkdocs_page_input_path = "resources/keycloak_saml_client_scope.md";
+    var mkdocs_page_url = "/terraform-provider-keycloak/resources/keycloak_saml_client_scope/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -125,27 +125,9 @@
                     
     <a class="" href="../keycloak_default_groups/">keycloak_default_groups</a>
                 </li>
-                <li class=" current">
+                <li class="">
                     
-    <a class="current" href="./">keycloak_openid_client</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#keycloak_openid_client">keycloak_openid_client</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#example-usage">Example Usage</a></li>
-        
-            <li><a class="toctree-l4" href="#argument-reference">Argument Reference</a></li>
-        
-            <li><a class="toctree-l4" href="#attributes-reference">Attributes Reference</a></li>
-        
-            <li><a class="toctree-l4" href="#import">Import</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../keycloak_openid_client/">keycloak_openid_client</a>
                 </li>
                 <li class="">
                     
@@ -299,15 +281,11 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Resources &raquo;</li>
-        
-      
     
-    <li>keycloak_openid_client</li>
+    <li>keycloak_saml_client_scope</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/mrparkers/terraform-provider-keycloak/edit/master/docs/resources/keycloak_openid_client.md"
+        <a href="https://github.com/mrparkers/terraform-provider-keycloak/edit/master/docs/resources/keycloak_saml_client_scope.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -317,100 +295,46 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="keycloak_openid_client">keycloak_openid_client</h1>
-<p>Allows for creating and managing Keycloak clients that use the OpenID Connect protocol.</p>
-<p>Clients are entities that can use Keycloak for user authentication. Typically,
-clients are applications that redirect users to Keycloak for authentication
-in order to take advantage of Keycloak's user sessions for SSO.</p>
+                <h1 id="keycloak_saml_client_scope">keycloak_saml_client_scope</h1>
+<p>Allows for creating and managing Keycloak client scopes that can be attached to
+clients that use the SAML protocol.</p>
+<p>Client Scopes can be used to share common protocol and role mappings between multiple
+clients within a realm.</p>
 <h3 id="example-usage">Example Usage</h3>
 <pre><code class="hcl">resource &quot;keycloak_realm&quot; &quot;realm&quot; {
     realm   = &quot;my-realm&quot;
     enabled = true
 }
 
-resource &quot;keycloak_openid_client&quot; &quot;openid_client&quot; {
-    realm_id            = &quot;${keycloak_realm.realm.id}&quot;
-    client_id           = &quot;test-client&quot;
-
-    name                = &quot;test client&quot;
-    enabled             = true
-
-    access_type         = &quot;CONFIDENTIAL&quot;
-    valid_redirect_uris = [
-        &quot;http://localhost:8080/openid-callback&quot;
-    ]
-
-    login_theme = &quot;keycloak&quot;
+resource &quot;keycloak_saml_client_scope&quot; &quot;saml_client_scope&quot; {
+    realm_id    = &quot;${keycloak_realm.realm.id}&quot;
+    name        = &quot;groups&quot;
+    description = &quot;This scope will map a user's group memberships to SAML assertion&quot;
+    gui_order   = 1
 }
 </code></pre>
 
 <h3 id="argument-reference">Argument Reference</h3>
 <p>The following arguments are supported:</p>
 <ul>
-<li><code>realm_id</code> - (Required) The realm this client is attached to.</li>
-<li><code>client_id</code> - (Required) The unique ID of this client, referenced in the URI during authentication and in issued tokens.</li>
-<li><code>name</code> - (Optional) The display name of this client in the GUI.</li>
-<li><code>enabled</code> - (Optional) When false, this client will not be able to initiate a login or obtain access tokens. Defaults to <code>true</code>.</li>
-<li><code>description</code> - (Optional) The description of this client in the GUI.</li>
-<li><code>access_type</code> - (Required) Specifies the type of client, which can be one of the following:<ul>
-<li><code>CONFIDENTIAL</code> - Used for server-side clients that require both client ID and secret when authenticating.
-  This client should be used for applications using the Authorization Code or Client Credentials grant flows.</li>
-<li><code>PUBLIC</code> - Used for browser-only applications that do not require a client secret, and instead rely only on authorized redirect
-  URIs for security. This client should be used for applications using the Implicit grant flow.</li>
-<li><code>BEARER-ONLY</code> - Used for services that never initiate a login. This client will only allow bearer token requests.</li>
-</ul>
-</li>
-<li><code>client_secret</code> - (Optional) The secret for clients with an <code>access_type</code> of <code>CONFIDENTIAL</code> or <code>BEARER-ONLY</code>. This value is sensitive and
-should be treated with the same care as a password. If omitted, Keycloak will generate a GUID for this attribute.</li>
-<li><code>standard_flow_enabled</code> - (Optional) When <code>true</code>, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to <code>false</code>.</li>
-<li><code>implicit_flow_enabled</code> - (Optional) When <code>true</code>, the OAuth2 Implicit Grant will be enabled for this client. Defaults to <code>false</code>.</li>
-<li><code>direct_access_grants_enabled</code> - (Optional) When <code>true</code>, the OAuth2 Resource Owner Password Grant will be enabled for this client. Defaults to <code>false</code>.</li>
-<li><code>service_accounts_enabled</code> - (Optional) When <code>true</code>, the OAuth2 Client Credentials grant will be enabled for this client. Defaults to <code>false</code>.</li>
-<li><code>valid_redirect_uris</code> - (Optional) A list of valid URIs a browser is permitted to redirect to after a successful login or logout. Simple
-wildcards in the form of an asterisk can be used here. This attribute must be set if either <code>standard_flow_enabled</code> or <code>implicit_flow_enabled</code>
-is set to <code>true</code>.</li>
-<li><code>web_origins</code> - (Optional) A list of allowed CORS origins. <code>+</code> can be used to permit all valid redirect URIs, and <code>*</code> can be used to permit all origins.</li>
-<li><code>root_url</code> - (Optional) When specified, this URL is prepended to any relative URLs found within <code>valid_redirect_uris</code>, <code>web_origins</code>, and <code>admin_url</code>.<ul>
-<li>NOTE: Due to limitations in the Keycloak API, when the <code>root_url</code> attribute is used, the <code>valid_redirect_uris</code>, <code>web_origins</code>, and <code>admin_url</code> attributes will be required.</li>
-</ul>
-</li>
-<li><code>admin_url</code> - (Optional) URL to the admin interface of the client.</li>
-<li><code>base_url</code> - (Optional) Default URL to use when the auth server needs to redirect or link back to the client.</li>
-<li><code>pkce_code_challenge_method</code> - (Optional) The challenge method to use for Proof Key for Code Exchange. Can be either <code>plain</code> or <code>S256</code> or set to empty value ``.</li>
-<li><code>full_scope_allowed</code> - (Optional) - Allow to include all roles mappings in the access token.</li>
-<li><code>access_token_lifespan</code> - (Optional) - Allow to set the lifespan of the access token</li>
-<li><code>consent_required</code> - (Optional) - Consent Required: If enabled, users have to consent to client access.</li>
-<li><code>authentication_flow_binding_overrides</code> - (Optional) - Override realm authentication flow bindings<ul>
-<li><code>browers_id</code> - (Optional) - Browser flow id, (flow needs to exist)</li>
-<li><code>direct_grant_id</code> - (Optional) - Direct grant flow id (flow needs to exist)</li>
-</ul>
-</li>
-<li><code>login_theme</code> - (Optional) - Override realm login theme</li>
-</ul>
-<h3 id="attributes-reference">Attributes Reference</h3>
-<p>In addition to the arguments listed above, the following computed attributes are exported:</p>
-<ul>
-<li><code>service_account_user_id</code> - When service accounts are enabled for this client, this attribute is the unique ID for the Keycloak user that represents this service account.</li>
+<li><code>realm_id</code> - (Required) The realm this client scope belongs to.</li>
+<li><code>name</code> - (Required) The display name of this client scope in the GUI.</li>
+<li><code>description</code> - (Optional) The description of this client scope in the GUI.</li>
+<li><code>consent_screen_text</code> - (Optional) When set, a consent screen will be displayed to users
+authenticating to clients with this scope attached. The consent screen will display the string
+value of this attribute.</li>
+<li><code>gui_order</code> - (Optional) Specify order of the client scope in GUI (such as in Consent page) as integer.</li>
 </ul>
 <h3 id="import">Import</h3>
-<p>Clients can be imported using the format <code>{{realm_id}}/{{client_keycloak_id}}</code>, where <code>client_keycloak_id</code> is the unique ID that Keycloak
-assigns to the client upon creation. This value can be found in the URI when editing this client in the GUI, and is typically a GUID.</p>
+<p>Client scopes can be imported using the format <code>{{realm_id}}/{{client_scope_id}}</code>, where <code>client_scope_id</code> is the unique ID that Keycloak
+assigns to the client scope upon creation. This value can be found in the URI when editing this client scope in the GUI, and is typically a GUID.</p>
 <p>Example:</p>
-<pre><code class="bash">$ terraform import keycloak_openid_client.openid_client my-realm/dcbc4c73-e478-4928-ae2e-d5e420223352
+<pre><code class="bash">$ terraform import keycloak_saml_client_scope.saml_client_scope my-realm/e8a5d115-6985-4de3-a0f5-732e1be4525e
 </code></pre>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../keycloak_openid_client_scope/" class="btn btn-neutral float-right" title="keycloak_openid_client_scope">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../keycloak_default_groups/" class="btn btn-neutral" title="keycloak_default_groups"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -436,10 +360,6 @@ assigns to the client upon creation. This value can be found in the URI when edi
           <a href="https://github.com/mrparkers/terraform-provider-keycloak/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../keycloak_default_groups/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../keycloak_openid_client_scope/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

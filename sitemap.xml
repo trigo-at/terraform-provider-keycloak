@@ -171,6 +171,16 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_saml_client_default_scopes/</loc>
+     <lastmod>2020-07-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_saml_client_scope/</loc>
+     <lastmod>2020-07-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_generic_client_protocol_mapper/</loc>
      <lastmod>2020-07-22</lastmod>
      <changefreq>daily</changefreq>
@@ -242,6 +252,11 @@
     </url>
     <url>
      <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_authentication_execution_config/</loc>
+     <lastmod>2020-07-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_identity_provider_token_exchange_scope_permission/</loc>
      <lastmod>2020-07-22</lastmod>
      <changefreq>daily</changefreq>
     </url>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://mrparkers.github.io/terraform-provider-keycloak/resources/keycloak_realm/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>keycloak_realm - Terraform Provider: Keycloak</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../index.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "keycloak_realm";
+    var mkdocs_page_input_path = "resources/keycloak_realm.md";
+    var mkdocs_page_url = "/terraform-provider-keycloak/resources/keycloak_realm/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Terraform Provider: Keycloak</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Getting Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Data Sources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data_sources/keycloak_group/">keycloak_group</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data_sources/keycloak_openid_client/">keycloak_openid_client</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data_sources/keycloak_realm/">keycloak_realm</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data_sources/keycloak_realm_keys/">keycloak_realm_keys</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data_sources/keycloak_role/">keycloak_role</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../data_sources/keycloak_saml_client_installation_provider/">keycloak_saml_client_installation_provider</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Resources</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">keycloak_realm</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#example-usage">Example Usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#argument-reference">Argument Reference</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#login-settings">Login Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#themes">Themes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tokens">Tokens</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#smtp">SMTP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#internationalization">Internationalization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#security-defenses-headers">Security Defenses Headers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#atributes">Atributes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#attributes-reference">Attributes Reference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#import">Import</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_realm_events/">keycloak_realm_events</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_role/">keycloak_role</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_user/">keycloak_user</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_user_roles/">keycloak_user_roles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_group/">keycloak_group</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_group_memberships/">keycloak_group_memberships</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_group_roles/">keycloak_group_roles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_default_groups/">keycloak_default_groups</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_client/">keycloak_openid_client</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_client_scope/">keycloak_openid_client_scope</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_client_default_scopes/">keycloak_openid_client_default_scopes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_client_optional_scopes/">keycloak_openid_client_optional_scopes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_user_attribute_protocol_mapper/">keycloak_openid_user_attribute_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_user_property_protocol_mapper/">keycloak_openid_user_property_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_group_membership_protocol_mapper/">keycloak_openid_group_membership_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_hardcoded_claim_protocol_mapper/">keycloak_openid_hardcoded_claim_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_full_name_protocol_mapper/">keycloak_openid_full_name_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_audience_protocol_mapper/">keycloak_openid_audience_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_hardcoded_role_protocol_mapper/">keycloak_openid_hardcoded_role_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_user_realm_role_protocol_mapper/">keycloak_openid_user_realm_role_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_user_client_role_protocol_mapper/">keycloak_openid_user_client_role_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_user_session_note_protocol_mapper/">keycloak_openid_user_session_note_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_openid_client_service_account_role/">keycloak_openid_client_service_account_role</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_saml_client/">keycloak_saml_client</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_saml_user_attribute_protocol_mapper/">keycloak_saml_user_attribute_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_saml_user_property_protocol_mapper/">keycloak_saml_user_property_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_saml_client_default_scopes/">keycloak_saml_client_default_scopes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_saml_client_scope/">keycloak_saml_client_scope</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_generic_client_protocol_mapper/">keycloak_generic_client_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_ldap_user_federation/">keycloak_ldap_user_federation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_ldap_full_name_mapper/">keycloak_ldap_full_name_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_ldap_group_mapper/">keycloak_ldap_group_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_ldap_hardcoded_role_mapper/">keycloak_ldap_hardcoded_role_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_ldap_msad_user_account_control_mapper/">keycloak_ldap_msad_user_account_control_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_ldap_msad_lds_user_account_control_mapper/">keycloak_ldap_msad_lds_user_account_control_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_ldap_user_attribute_mapper/">keycloak_ldap_user_attribute_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_custom_user_federation/">keycloak_custom_user_federation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_saml_identity_provider/">keycloak_saml_identity_provider</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_oidc_identity_provider/">keycloak_oidc_identity_provider</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_generic_client_role_mapper/">keycloak_generic_client_role_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_attribute_importer_identity_provider_mapper/">keycloak_attribute_importer_identity_provider_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_authentication_execution/">keycloak_authentication_execution</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_authentication_execution_config/">keycloak_authentication_execution_config</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_identity_provider_token_exchange_scope_permission/">keycloak_identity_provider_token_exchange_scope_permission</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Terraform Provider: Keycloak</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Resources &raquo;</li>
+        
+      
+    
+    <li>keycloak_realm</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mrparkers/terraform-provider-keycloak/edit/master/docs/resources/keycloak_realm.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="keycloak_realm">keycloak_realm</h1>
+<p>Allows for creating and managing Realms within Keycloak.</p>
+<p>A realm manages a logical collection of users, credentials, roles, and groups.
+Users log in to realms and can be federated from multiple sources.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="hcl">resource &quot;keycloak_realm&quot; &quot;realm&quot; {
+    realm                   = &quot;test&quot;
+    enabled                 = true
+    display_name            = &quot;test realm&quot;
+    display_name_html       = &quot;&lt;b&gt;test realm&lt;/b&gt;&quot;
+
+    login_theme          = &quot;base&quot;
+
+    access_code_lifespan = &quot;1h&quot;
+    ssl_required  = &quot;external&quot;
+    password_policy = &quot;upperCase(1) and length(8) and forceExpiredPasswordChange(365) and notUsername&quot;
+    attributes = {
+      mycustomAttribute = &quot;myCustomValue&quot;
+    }
+
+    smtp_server {
+        host = &quot;smtp.example.com&quot;
+        from = &quot;example@example.com&quot;
+
+        auth {
+            username = &quot;tom&quot;
+            password = &quot;password&quot;
+        }
+    }
+
+    internationalization {
+        supported_locales = [
+            &quot;en&quot;,
+            &quot;de&quot;,
+            &quot;es&quot;
+        ]
+        default_locale    = &quot;en&quot;
+    }
+
+    security_defenses {
+        headers {
+            x_frame_options                     = &quot;DENY&quot;
+            content_security_policy             = &quot;frame-src 'self'; frame-ancestors 'self'; object-src 'none';&quot;
+            content_security_policy_report_only = &quot;&quot;
+            x_content_type_options              = &quot;nosniff&quot;
+            x_robots_tag                        = &quot;none&quot;
+            x_xss_protection                    = &quot;1; mode=block&quot;
+            strict_transport_security           = &quot;max-age=31536000; includeSubDomains&quot;
+        }
+        brute_force_detection {
+            permanent_lockout                 = false
+            max_login_failures                = 30
+            wait_increment_seconds            = 60
+            quick_login_check_milli_seconds   = 1000
+            minimum_quick_login_wait_seconds  = 60
+            max_failure_wait_seconds          = 900
+            failure_reset_time_seconds        = 43200
+        }
+    }
+}
+</code></pre>
+
+<h3 id="argument-reference">Argument Reference</h3>
+<p>The following arguments are supported:</p>
+<ul>
+<li><code>realm</code> - (Required) The name of the realm. This is unique across Keycloak.</li>
+<li><code>enabled</code> - (Optional) When false, users and clients will not be able to access this realm. Defaults to <code>true</code>.</li>
+<li><code>display_name</code> - (Optional) The display name for the realm that is shown when logging in to the admin console.</li>
+<li><code>display_name_html</code> - (Optional) The display name for the realm that is rendered as HTML on the screen when logging in to the admin console.</li>
+<li><code>user_managed_access</code> - (Optional) When true, users are allowed to manage their own resources. Defaults to <code>false</code>.</li>
+</ul>
+<h5 id="login-settings">Login Settings</h5>
+<p>The following attributes are all booleans, and can be found in the "Login" tab within the realm settings.
+If any of these attributes are not specified, they will default to Keycloak's default settings.</p>
+<ul>
+<li><code>registration_allowed</code> - (Optional) When true, user registration will be enabled, and a link for registration will be displayed on the login page.</li>
+<li><code>registration_email_as_username</code> - (Optional) When true, the user's email will be used as their username during registration.</li>
+<li><code>edit_username_allowed</code> - (Optional) When true, the username field is editable.</li>
+<li><code>reset_password_allowed</code> - (Optional) When true, a "forgot password" link will be displayed on the login page.</li>
+<li><code>remember_me</code> - (Optional) When true, a "remember me" checkbox will be displayed on the login page, and the user's session will not expire between browser restarts.</li>
+<li><code>verify_email</code> - (Optional) When true, users are required to verify their email address after registration and after email address changes.</li>
+<li><code>login_with_email_allowed</code> - (Optional) When true, users may log in with their email address.</li>
+<li><code>duplicate_emails_allowed</code> - (Optional) When true, multiple users will be allowed to have the same email address. This attribute must be set to <code>false</code> if <code>login_with_email_allowed</code> is set to <code>true</code>.</li>
+<li><code>ssl_required</code> - (Optional) Can be one of following values: 'none, 'external' or 'all'</li>
+</ul>
+<h5 id="themes">Themes</h5>
+<p>The following attributes can be used to configure themes for the realm. Custom themes can be specified here.
+If any of these attributes are not specified, they will default to Keycloak's default settings. Typically the <code>keycloak</code> theme is used by default.</p>
+<ul>
+<li><code>login_theme</code> - (Optional) Used for the login, forgot password, and registration pages.</li>
+<li><code>account_theme</code> - (Optional) Used for account management pages.</li>
+<li><code>admin_theme</code> - (Optional) Used for the admin console.</li>
+<li><code>email_theme</code> - (Optional) Used for emails that are sent by Keycloak.</li>
+</ul>
+<h5 id="tokens">Tokens</h5>
+<p>The following attributes can be found in the "Tokens" tab within the realm settings.</p>
+<ul>
+<li><code>default_signature_algorithm</code> - (Optional) Default algorithm used to sign tokens for the realm.</li>
+<li><code>revoke_refresh_token</code> - (Optional) If enabled a refresh token can only be used number of times specified in 'refresh_token_max_reuse' before they are revoked. If unspecified, refresh tokens can be reused.</li>
+<li><code>refresh_token_max_reuse</code> - (Optional) Maximum number of times a refresh token can be reused before they are revoked. If unspecified and 'revoke_refresh_token' is enabled the default value is 0 and refresh tokens can not be reused.</li>
+</ul>
+<p>The attributes below should be specified as <a href="https://golang.org/pkg/time/#Duration.String">Go duration strings</a>. They will default to Keycloak's default settings.</p>
+<ul>
+<li><code>sso_session_idle_timeout</code> - (Optional) The amount of time a session can be idle before it expires.</li>
+<li><code>sso_session_max_lifespan</code> - (Optional) The maximum amount of time before a session expires regardless of activity.</li>
+<li><code>offline_session_idle_timeout</code> - (Optional) The amount of time an offline session can be idle before it expires.</li>
+<li><code>offline_session_max_lifespan</code> - (Optional) The maximum amount of time before an offline session expires regardless of activity.</li>
+<li><code>access_token_lifespan</code> - (Optional) The amount of time an access token can be used before it expires.</li>
+<li><code>access_token_lifespan_for_implicit_flow</code> - (Optional) The amount of time an access token issued with the OpenID Connect Implicit Flow can be used before it expires.</li>
+<li><code>access_code_lifespan</code> - (Optional) The maximum amount of time a client has to finish the authorization code flow.</li>
+<li><code>access_code_lifespan_login</code> - (Optional) The maximum amount of time a user is permitted to stay on the login page before the authentication process must be restarted.</li>
+<li><code>access_code_lifespan_user_action</code> - (Optional) The maximum amount of time a user has to complete login related actions, such as updating a password.</li>
+<li><code>action_token_generated_by_user_lifespan</code> - (Optional) The maximum time a user has to use a user-generated permit before it expires.</li>
+<li><code>action_token_generated_by_admin_lifespan</code> - (Optional) The maximum time a user has to use an admin-generated permit before it expires.</li>
+</ul>
+<h5 id="smtp">SMTP</h5>
+<p>The <code>smtp_server</code> block can be used to configure the realm's SMTP settings, which can be found in the "Email" tab in the GUI.
+This block supports the following attributes:</p>
+<ul>
+<li><code>host</code> - (Required) The host of the SMTP server.</li>
+<li><code>port</code> - (Optional) The port of the SMTP server (defaults to 25).</li>
+<li><code>from</code> - (Required) The email address for the sender.</li>
+<li><code>from_display_name</code> - (Optional) The display name of the sender email address.</li>
+<li><code>reply_to</code> - (Optional) The "reply to" email address.</li>
+<li><code>reply_to_display_name</code> - (Optional) The display name of the "reply to" email address.</li>
+<li><code>envelope_from</code> - (Optional) The email address uses for bounces.</li>
+<li><code>starttls</code> - (Optional) When <code>true</code>, enables StartTLS. Defaults to <code>false</code>.</li>
+<li><code>ssl</code> - (Optional) When <code>true</code>, enables SSL. Defaults to <code>false</code>.</li>
+<li><code>auth</code> - (Optional) Enables authentication to the SMTP server.  This block supports the following attributes:<ul>
+<li><code>username</code>- (Required) The SMTP server username.</li>
+<li><code>password</code> - (Required) The SMTP server password.</li>
+</ul>
+</li>
+</ul>
+<h5 id="internationalization">Internationalization</h5>
+<p>Internationalization support can be configured by using the <code>internationalization</code> block, which supports the following attributes:</p>
+<ul>
+<li><code>supported_locales</code> - (Required) A list of <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1</a> locale codes that the realm should support.</li>
+<li><code>default_locale</code> - (Required) The locale to use by default. This locale code must be present within the <code>supported_locales</code> list.</li>
+</ul>
+<h5 id="security-defenses-headers">Security Defenses Headers</h5>
+<p>Header configuration support for browser security settings and brute force detection. It can be configured trough the<code>security_defenses</code> block using the <code>headers</code> and the <code>brute_force_detection</code> subblocks.</p>
+<p>The <code>headers</code> block supports the following attributes:</p>
+<ul>
+<li><code>x_frame_options</code> - (Optional) Sets the x-frame-option, could be used for prevent pages from being included by non-origin iframes. More Infos could be found in the <a href="https://tools.ietf.org/html/rfc7034">RFC7034</a></li>
+<li><code>content_security_policy</code> - (Optional) Sets the Content Security Policy, could be used for prevent pages from being included by non-origin iframes. More Infos could be found in the <a href="https://www.w3.org/TR/CSP/">W3C-CSP</a> Abstract.</li>
+<li><code>content_security_policy_report_only</code> - (Optional) For testing Content Security Policies.</li>
+<li><code>x_content_type_options</code> - (Optional) Sets the X-Content-Type-Options,  could be used for prevent MIME-sniffing a respone away from the declared content-type</li>
+<li><code>x_robots_tag</code> - (Optional) Prevent pages from appearing in search engines.</li>
+<li><code>x_xss_protection</code> - (Optional) This header configures the Cross-site scripting (XSS) filter in your browser.</li>
+<li><code>strict_transport_security</code> - (Optional) The Script-Transport-Security HTTP header tells browsers to always use HTTPS. Maxage could be set and subdomains could be also included.</li>
+</ul>
+<p>The <code>brute_force_detection</code> block supports the following attributes:</p>
+<ul>
+<li><code>permanent_lockout</code> - (Optional) Lock the user permanently when the user exceeds the maximum login failures.</li>
+<li><code>max_login_failures</code> - (Optional) How many failures before wait is triggered.</li>
+<li><code>wait_increment_seconds</code> - (Optional) When failure threshold has been met, how much time should the user be locked out?</li>
+<li><code>quick_login_check_milli_seconds</code> - (Optional) If a failure happens concurrently too quickly, lock out the user.</li>
+<li><code>minimum_quick_login_wait_seconds</code> - (Optional) How long to wait after a quick login failure.</li>
+<li><code>max_failure_wait_seconds</code> - (Optional) Max. time a user will be locked out.</li>
+<li><code>failure_reset_time_seconds</code> - (Optional) When will failure count be reset?</li>
+</ul>
+<h4 id="atributes">Atributes</h4>
+<p>Map, can be used to add custom attributes to a realm. Or perhaps influence a certain attribute that is not supported in this terraform-provider</p>
+<h3 id="attributes-reference">Attributes Reference</h3>
+<p>In addition to the arguments listed above, the following computed attributes are exported:</p>
+<ul>
+<li><code>internal_id</code> - When importing realms created outside of this terraform provider, they could use generated arbitrary IDs for the technical realm id. Realms created by this provider always use the realm's name for its technical id.</li>
+</ul>
+<h3 id="import">Import</h3>
+<p>Realms can be imported using their name:</p>
+<pre><code class="bash">$ terraform import keycloak_realm.realm test
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../keycloak_realm_events/" class="btn btn-neutral float-right" title="keycloak_realm_events">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../data_sources/keycloak_saml_client_installation_provider/" class="btn btn-neutral" title="keycloak_saml_client_installation_provider"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mrparkers/terraform-provider-keycloak/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../data_sources/keycloak_saml_client_installation_provider/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../keycloak_realm_events/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

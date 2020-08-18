@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://mrparkers.github.io/terraform-provider-keycloak/data_sources/keycloak_openid_client/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>keycloak_openid_client - Terraform Provider: Keycloak</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../index.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "keycloak_openid_client";
+    var mkdocs_page_input_path = "data_sources/keycloak_openid_client.md";
+    var mkdocs_page_url = "/terraform-provider-keycloak/data_sources/keycloak_openid_client/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Terraform Provider: Keycloak</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Getting Started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Data Sources</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_group/">keycloak_group</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">keycloak_openid_client</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#example-usage">Example Usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#argument-reference">Argument Reference</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#attributes-reference">Attributes Reference</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_realm/">keycloak_realm</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_realm_keys/">keycloak_realm_keys</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_role/">keycloak_role</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../keycloak_saml_client_installation_provider/">keycloak_saml_client_installation_provider</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Resources</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_realm/">keycloak_realm</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_realm_events/">keycloak_realm_events</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_role/">keycloak_role</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_user/">keycloak_user</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_user_roles/">keycloak_user_roles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_group/">keycloak_group</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_group_memberships/">keycloak_group_memberships</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_group_roles/">keycloak_group_roles</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_default_groups/">keycloak_default_groups</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_client/">keycloak_openid_client</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_client_scope/">keycloak_openid_client_scope</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_client_default_scopes/">keycloak_openid_client_default_scopes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_client_optional_scopes/">keycloak_openid_client_optional_scopes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_user_attribute_protocol_mapper/">keycloak_openid_user_attribute_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_user_property_protocol_mapper/">keycloak_openid_user_property_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_group_membership_protocol_mapper/">keycloak_openid_group_membership_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_hardcoded_claim_protocol_mapper/">keycloak_openid_hardcoded_claim_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_full_name_protocol_mapper/">keycloak_openid_full_name_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_audience_protocol_mapper/">keycloak_openid_audience_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_hardcoded_role_protocol_mapper/">keycloak_openid_hardcoded_role_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_user_realm_role_protocol_mapper/">keycloak_openid_user_realm_role_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_user_client_role_protocol_mapper/">keycloak_openid_user_client_role_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_user_session_note_protocol_mapper/">keycloak_openid_user_session_note_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_openid_client_service_account_role/">keycloak_openid_client_service_account_role</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_saml_client/">keycloak_saml_client</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_saml_user_attribute_protocol_mapper/">keycloak_saml_user_attribute_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_saml_user_property_protocol_mapper/">keycloak_saml_user_property_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_saml_client_default_scopes/">keycloak_saml_client_default_scopes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_saml_client_scope/">keycloak_saml_client_scope</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_generic_client_protocol_mapper/">keycloak_generic_client_protocol_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_ldap_user_federation/">keycloak_ldap_user_federation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_ldap_full_name_mapper/">keycloak_ldap_full_name_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_ldap_group_mapper/">keycloak_ldap_group_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_ldap_hardcoded_role_mapper/">keycloak_ldap_hardcoded_role_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_ldap_msad_user_account_control_mapper/">keycloak_ldap_msad_user_account_control_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_ldap_msad_lds_user_account_control_mapper/">keycloak_ldap_msad_lds_user_account_control_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_ldap_user_attribute_mapper/">keycloak_ldap_user_attribute_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_custom_user_federation/">keycloak_custom_user_federation</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_saml_identity_provider/">keycloak_saml_identity_provider</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_oidc_identity_provider/">keycloak_oidc_identity_provider</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_generic_client_role_mapper/">keycloak_generic_client_role_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_attribute_importer_identity_provider_mapper/">keycloak_attribute_importer_identity_provider_mapper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_authentication_execution/">keycloak_authentication_execution</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_authentication_execution_config/">keycloak_authentication_execution_config</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../resources/keycloak_identity_provider_token_exchange_scope_permission/">keycloak_identity_provider_token_exchange_scope_permission</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Terraform Provider: Keycloak</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Data Sources &raquo;</li>
+        
+      
+    
+    <li>keycloak_openid_client</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/mrparkers/terraform-provider-keycloak/edit/master/docs/data_sources/keycloak_openid_client.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="keycloak_openid_client-data-source">keycloak_openid_client data source</h1>
+<p>This data source can be used to fetch properties of a Keycloak OpenID client for usage with other resources.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="hcl">data &quot;keycloak_openid_client&quot; &quot;realm_management&quot; {
+  realm_id = &quot;my-realm&quot;
+  client_id = &quot;realm-management&quot;
+}
+
+# use the data source
+data &quot;keycloak_role&quot; &quot;admin&quot; {
+  realm_id = &quot;my-realm&quot;
+  client_id = data.keycloak_openid_client.realm_management.id
+  name = &quot;realm-admin&quot;
+}
+</code></pre>
+
+<h3 id="argument-reference">Argument Reference</h3>
+<p>The following arguments are supported:</p>
+<ul>
+<li><code>realm_id</code> - (Required) The realm id.</li>
+<li><code>client_id</code> - (Required) The client id.</li>
+</ul>
+<h3 id="attributes-reference">Attributes Reference</h3>
+<p>See the docs for the <a href="../../resources/keycloak_openid_client/"><code>keycloak_openid_client</code> resource</a> for details on the exported attributes.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../keycloak_realm/" class="btn btn-neutral float-right" title="keycloak_realm">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../keycloak_group/" class="btn btn-neutral" title="keycloak_group"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/mrparkers/terraform-provider-keycloak/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../keycloak_group/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../keycloak_realm/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
